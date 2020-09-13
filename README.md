@@ -41,4 +41,9 @@ To create a new page, you can simply copy the `public/inc/start.php` or the `pub
 
 ---
 
-## :blush: That's it!
+## :smile: That's it!
+
+---
+
+### :keyboard: Issues and suggestions
+Feel free to [open an issue](https://github.com/RundesBalli/lightweight-PHP-Boilerplate/issues/new) :blush:  
