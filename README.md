@@ -20,7 +20,7 @@ The HTML- and CSS-Template isn't styled at all. It's only the basic skeleton. Yo
 ---
 
 ## :question: How to use?
-### :scroll: index.php
+### :scroll: Routes
 To add some pages to your website, you have to extend the `$routes` in the `includes/routing/routes.php`.
 ```php
 $routes = array(
