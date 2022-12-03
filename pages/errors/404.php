@@ -8,5 +8,5 @@
 $title = '404 Not Found';
 http_response_code(404);
 $content.= '<h1>404 Not Found</h1>';
-$content.= '<p>'.sprintf('The resource <code>%s</code> you have requested does not exist.', output($_SERVER['REQUEST_URI'])).'</p>';
+$content.= '<p>'.sprintf('The resource <code>%s</code> you have requested does not exist.', htmlentities($_SERVER['REQUEST_URI'], ENT_QUOTES)).'</p>';
 ?>
