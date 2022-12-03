@@ -1,7 +1,6 @@
-/*
-CSS-Stylesheet
-*/
-
+/**
+ * CSS-Stylesheet
+ */
 html, body {
   padding: 0px;
   margin: 0px;
@@ -29,11 +28,11 @@ html, body {
   width: 100%;
 }
 
-/*
-  You can use
-    .nav > a.active
-  to highlight the current page in the navigation
-*/
+/**
+ * You can use
+ *   .nav > a.active
+ * to highlight the current page in the navigation
+ */
 
 .content {
   width: 100%;
