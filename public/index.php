@@ -13,7 +13,7 @@
  */
 
 /**
- * Initialize the output, the default title and the queryCount
+ * Initialize the output and the default title
  */
 $content = '';
 $title = '';
