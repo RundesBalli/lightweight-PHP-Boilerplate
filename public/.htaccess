@@ -1,30 +1,31 @@
-# Prevent directory listing
+# Disable indexing
 IndexIgnore *
 
-# XSS prevention and HSTS
+# Security header
 Header set X-Frame-Options DENY
 Header set X-XSS-Protection "1; mode=block"
 Header set Content-Security-Policy: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
 Header set X-Content-Type-Options nosniff
 Header set Strict-Transport-Security "max-age=31536000" env=HTTPS
 
-# Cache-Control Header
-<FilesMatch "\.(jpg|jpeg|png|gif|js|css|eot|svg|ttf|woff|woff2)$">
+# Enable CORS
+Header set Access-Control-Allow-Origin "*"
+
+# Cache Control
+<FilesMatch "\.(jpg|jpeg|png|gif|html|js|css|eot|svg|ttf|woff|woff2)$">
   Header set Cache-Control "max-age=3600, public"
 </FilesMatch>
 
-# Enable RewriteEngine to use user-friendly URLs with the following RewriteRules, if it hasn't been defined in the server configuration already.
+# Rewrite engine
 RewriteEngine On
 
-# Only apply the RewriteRules if the URL doesn't link to a file or directory
+# If the URL is a file or directory, then ignore the following rules.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Matches all URLs with 0-9a-zA-Z-, case-insensitive (NC) and appends the query string
-# from the original URL to the target (QSA). If the rule matches, no other rules will be applied (L).
-# See: https://httpd.apache.org/docs/current/mod/mod_rewrite.html#RewriteRule
-RewriteRule ^([\w\d-]+)$ /index.php?p=$1 [NC,L,QSA]
+# Rules for everything
+RewriteRule ^([a-z-\d]+)$ /index.php?page=$1 [NC,L,QSA]
 
-# ErrorHandling
-ErrorDocument 404 /index.php?p=404
-ErrorDocument 403 /index.php?p=403
+# Errorhandling
+ErrorDocument 404 /index.php?page=404
+ErrorDocument 403 /index.php?page=403
