@@ -5,16 +5,18 @@
  * Generates the output with previous generated contents.
  */
 $output = preg_replace(
-  array(
+  [
     '/{TITLE}/im',
     '/{NAV}/im',
-    '/{CONTENT}/im'
-  ),
-  array(
+    '/{CONTENT}/im',
+    '/{FOOTER}/im',
+  ],
+  [
     (!empty($title) ? $title.' - ' : NULL),
     $nav,
-    $content
-  ),
+    $content,
+    $footer
+  ],
   $template
 );
 ?>
