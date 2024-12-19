@@ -36,4 +36,9 @@ html, body {
 
 .content {
   width: 100%;
+
+.footer {
+  /**
+   * Some styling...
+   */
 }

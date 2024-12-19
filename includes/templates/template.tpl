@@ -26,6 +26,9 @@ Lightweight PHP-Boilerplate by RundesBalli: https://github.com/RundesBalli/light
       <div class="content">
         {CONTENT}
       </div>
+      <div class="footer">
+        {FOOTER}
+      </div>
     </div>
   </body>
 </html>
