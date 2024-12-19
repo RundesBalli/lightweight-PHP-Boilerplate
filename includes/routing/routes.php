@@ -10,7 +10,7 @@ $routes = [
   /**
    * Pages
    */
-  'start' => 'start.php',
+  'main' => 'main.php', # Default route
 
   /**
    * Error pages
