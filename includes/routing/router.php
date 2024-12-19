@@ -6,48 +6,55 @@
  */
 
 /**
- * Check if an error occoured already.
+ * Find out which page was requested and if the requested page matches the pattern.
  */
-if(!empty($error)) {
-  require_once(PAGE_INCLUDE_DIR.'errors'.DIRECTORY_SEPARATOR.'500.php');
-} else {
+if(!empty($_GET['page']) AND preg_match('/([a-z-\d]+)/i', $_GET['page'], $pageMatch) === 1) {
   /**
-   * No error occurred so far. Find out which page was requested and if the requested page matches the pattern.
+   * Check if the requested page exist in the routes.
    */
-  if(!empty($_GET['page']) AND preg_match('/([a-z-\d]+)/i', $_GET['page'], $pageMatch) === 1) {
+  if(array_key_exists($pageMatch[1], $routes)) {
     /**
-     * Check if the requested page exist in the routes.
+     * The route exists. Include the file.
      */
-    if(array_key_exists($pageMatch[1], $routes)) {
+    $route = $pageMatch[1];
+    $fileToInclude = PAGE_INCLUDE_DIR.$routes[$route];
+    if(file_exists($fileToInclude)) {
       /**
-       * The route exists. Include the file.
+       * File exists
        */
-      $route = $pageMatch[1];
-      $fileToInclude = PAGE_INCLUDE_DIR.$routes[$route];
-      if(file_exists($fileToInclude)) {
-        /**
-         * File exists
-         */
-        require_once($fileToInclude);
-      } else {
-        /**
-         * File doesn't exist.
-         */
-        $error = 'includeFileNotFound';
-        require_once(PAGE_INCLUDE_DIR.'errors'.DIRECTORY_SEPARATOR.'500.php');
-      }
+      require_once($fileToInclude);
     } else {
       /**
-       * The requested page doesn't exist in the routes.
+       * File doesn't exist.
        */
-      require_once(PAGE_INCLUDE_DIR.'errors'.DIRECTORY_SEPARATOR.'404.php');
+      http_response_code(500);
+      echo '<h1>500 - Internal Server Error</h1>';
+      die();
     }
   } else {
     /**
-     * No page was requested or the requested page doesn't match the pattern.
-     * Redirection to the home page.
+     * The requested page doesn't exist in the routes.
      */
-    header('Location: /start');
+    header('Location: /');
+    die();
+  }
+} else {
+  /**
+   * No page was requested or the requested page doesn't match the pattern.
+   */
+  $route = 'main';
+  $fileToInclude = PAGE_INCLUDE_DIR.$routes[$route];
+  if(file_exists($fileToInclude)) {
+    /**
+     * File exists
+     */
+    require_once($fileToInclude);
+  } else {
+    /**
+     * File doesn't exist.
+     */
+    http_response_code(500);
+    echo '<h1>500 - Internal Server Error</h1>';
     die();
   }
 }
