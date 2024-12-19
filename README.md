@@ -23,13 +23,13 @@ The HTML- and CSS-Template isn't styled at all. It's only the basic skeleton. Yo
 ### :scroll: Routes
 To add some pages to your website, you have to extend the `$routes` in the `includes/routing/routes.php`.
 ```php
-$routes = array(
-  'start'      => 'start.php',
+$routes = [
+  'main'       => 'main.php',
   'foobar'     => 'foobar.php',
   '404'        => '404.php',
   '403'        => '403.php',
   'somePage'   => 'somePage.php'
-);
+];
 ```
 If you want the page to be displayed in the navigation, you have to extend the `$nav` in `includes/generation/navigation.php`:
 ```php
