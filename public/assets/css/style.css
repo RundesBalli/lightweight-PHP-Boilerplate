@@ -21,11 +21,15 @@ html, body {
 }
 
 .header {
-  width: 100%;
+  /**
+   * Some styling...
+   */
 }
 
 .nav {
-  width: 100%;
+  /**
+   * Some styling...
+   */
 }
 
 /**
@@ -35,7 +39,10 @@ html, body {
  */
 
 .content {
-  width: 100%;
+  /**
+   * Some styling...
+   */
+}
 
 .footer {
   /**
