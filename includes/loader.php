@@ -12,6 +12,12 @@ require_once(__DIR__.DIRECTORY_SEPARATOR.'config.php');
 require_once(__DIR__.DIRECTORY_SEPARATOR.'constants.php');
 
 /**
+ * Database connection and functions
+ */
+// require_once(__DIR__.DIRECTORY_SEPARATOR.'database'.DIRECTORY_SEPARATOR.'sql.php');
+// require_once(__DIR__.DIRECTORY_SEPARATOR.'functions'.DIRECTORY_SEPARATOR.'defuse.php');
+
+/**
  * Content generation and router
  */
 require_once(__DIR__.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.'readTemplate.php');
